@@ -11,20 +11,6 @@ Feature: Smoke steps
     Then I wait for element with selector "#gsr" to be present
     Then element with selector "#gsr" should contain text "Cucumber"
 
-  #Stuck because of Http
-  #@smoke2
-  # Scenario: Quote Page Required Pages
-  #   Given I open url "http://quote-qa.portnov.com/"
-  #   Then I should see page title as "Get a Quote"
-  #   Then element with selector "#quoteForm > fieldset > section > div > div.row > div.col-xs-12.col-sm-12.col-md-8.col-lg-8.md-padding-left > div:nth-child(1) > input" should be present
-  #   When I type "Tester T Testington" into element with selector "Name"
-  #   When I type "test4life" into element with selector "Username"
-  #   When I type "P@$$w04d" into element with selector "Enter Password"
-  #   When I type "P@$$w04d" into element with selector "Confirm Password"
-  #   Then I click on element with selector "Send"
-  #   Then element with selector "Submitted Application" should contain text "Submitted Application"
-
-
   @smoke3
   Scenario: Wikipedia
     Given I open url "https://www.wikipedia.org/"

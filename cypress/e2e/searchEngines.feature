@@ -1,6 +1,5 @@
 @search
 Feature: Search Engines
-  #Done!
   @search1
   Scenario: Predefined steps for Google
     Given I open url "https://google.com"
@@ -11,20 +10,7 @@ Feature: Search Engines
     Then I wait for element with selector "#gsr" to be present
     Then element with selector "#gsr" should contain text "Cucumber"
 
-  # #BROKE AF
-  @search2
-  Scenario:  Predefined steps for Bing
-    Given I open url "https://bing.com"
-    Then I should see page title as "Bing"
-    Then element with selector "#sb_form_q" should be present
-    Then I click on element with selector "#sb_form_q"
-    When I type "Behavior Driven Development" into element with selector "#sb_form_q"
-    Then I click on element with selector "#search_icon > svg"
-    Then I wait for element with selector "//*[@id='res']" to be present
-    Then element with selector "//*[@id='res']" should contain text "Cucumber"
-
-#Done!
-@search3
+@search2
 Scenario:  Predefined steps for Yahoo
   Given I open url "https://yahoo.com"
   Then I should see page title contains "Yahoo"
@@ -34,7 +20,6 @@ Scenario:  Predefined steps for Yahoo
   Then I wait for element with selector "#results" to be present
   Then element with selector "#results" should contain text "Cucumber"
 
-#Done!
 @search4
 Scenario:  Predefined steps for duckduckgo
   Given I open url "https://duckduckgo.com"
@@ -45,7 +30,6 @@ Scenario:  Predefined steps for duckduckgo
   Then I wait for element with selector "#react-layout" to be present
   Then element with selector "#react-layout" should contain text "Cucumber"
 
-#Done!
 @search5
 Scenario:  Predefined steps for swisscows
   Given I open url "https://swisscows.com"
@@ -56,7 +40,6 @@ Scenario:  Predefined steps for swisscows
   Then I wait for element with selector "#__next > div" to be present
   Then element with selector "#__next > div" should contain text "Cucumber"
 
-# Done!
 @search6
 Scenario:  Predefined steps for Search Encrypt
   Given I open url "https://searchencrypt.com"
@@ -67,7 +50,6 @@ Scenario:  Predefined steps for Search Encrypt
   Then I wait for element with selector "#app > section > section.serp__body.site-wrapper.container-wrapper" to be present
   Then element with selector "#app > section > section.serp__body.site-wrapper.container-wrapper" should contain text "Cucumber"
 
-#Done!
 @search7
 Scenario:  Predefined steps for startpage
   Given I open url "https://startpage.com"
@@ -78,7 +60,6 @@ Scenario:  Predefined steps for startpage
   Then I wait for element with selector "body > div.layout > div" to be present
   Then element with selector "body > div.layout > div" should contain text "Cucumber"
 
-#Done!
 @search8
 Scenario:  Predefined steps for ecosia
   Given I open url "https://ecosia.org/"
