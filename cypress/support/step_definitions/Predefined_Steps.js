@@ -34,7 +34,6 @@ Then(`I wait for {int} sec`, (sec) => {
   cy.wait(sec * 1000);
 });
 
-//FUCK IT CHANGE ALL TO CSS XPATH IS DEADDDDDDD!!!!!!
 Then(`element with selector {string} should be present`, (selector) => {
   cy.get(selector).should("be.visible");
 });
