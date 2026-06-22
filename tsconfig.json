@@ -1,7 +1,20 @@
 {
-    "compilerOptions": {
-      "paths": {
-        "@badeball/cypress-cucumber-preprocessor/*": ["./node_modules/@badeball/cypress-cucumber-preprocessor/dist/subpath-entrypoints/*"]
-      }
+  "compilerOptions": {
+    "target": "ES2021",
+    "lib": ["ES2021", "DOM"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "types": ["cypress"],
+    "paths": {
+      "@badeball/cypress-cucumber-preprocessor/*": [
+        "./node_modules/@badeball/cypress-cucumber-preprocessor/dist/subpath-entrypoints/*"
+      ]
     }
-  }
+  },
+  "include": ["cypress/**/*.ts", "cypress.config.ts"]
+}
