@@ -1,4 +1,4 @@
-import { Then, When } from '@badeball/cypress-cucumber-preprocessor';
+import { Given, Then, When } from '@badeball/cypress-cucumber-preprocessor';
 import { HomePage } from '../pages/HomePage';
 import { LoginModal } from '../pages/LoginModal';
 import { SignupModal } from '../pages/SignupModal';
@@ -49,4 +49,9 @@ When('I sign up as a new unique user', () => {
 
 Then('I should see the signup confirmation', () => {
   cy.get('@alert').should('have.been.calledWith', 'Sign up successful.');
+});
+
+Given('I am logged in via the login command', () => {
+  home.visitStore();
+  cy.loginViaUI(Cypress.env('DEMOBLAZE_USER'), Cypress.env('DEMOBLAZE_PASS'));
 });
