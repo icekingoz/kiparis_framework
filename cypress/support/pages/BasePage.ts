@@ -28,4 +28,14 @@ export abstract class BasePage {
   welcomeLabel(): Cypress.Chainable<JQuery<HTMLElement>> {
     return cy.get('#nameofuser');
   }
+
+  // Wait until the async login completes and the navbar reflects the logged-in
+  // user. Generous timeout absorbs the demo site's cold-start latency.
+  confirmLoggedIn(username: string): void {
+    cy.get('#nameofuser', { timeout: 15000 }).should('be.visible').and('contain.text', username);
+  }
+
+  expectLoggedOut(): void {
+    cy.get('#login2').should('be.visible');
+  }
 }

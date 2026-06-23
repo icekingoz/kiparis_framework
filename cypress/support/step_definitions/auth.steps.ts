@@ -1,0 +1,39 @@
+import { Then, When } from '@badeball/cypress-cucumber-preprocessor';
+import { HomePage } from '../pages/HomePage';
+import { LoginModal } from '../pages/LoginModal';
+
+const home = new HomePage();
+const loginModal = new LoginModal();
+
+When('I log in with valid credentials', () => {
+  const user = Cypress.env('DEMOBLAZE_USER');
+  loginModal.login(user, Cypress.env('DEMOBLAZE_PASS'));
+  home.confirmLoggedIn(user);
+});
+
+Then('I should be logged in', () => {
+  home.welcomeLabel().should('contain.text', Cypress.env('DEMOBLAZE_USER'));
+});
+
+When('I log out', () => {
+  home.logout();
+});
+
+Then('I should be logged out', () => {
+  home.expectLoggedOut();
+});
+
+When('I log in as the registered user with password {string}', (password: string) => {
+  cy.on('window:alert', cy.stub().as('alert'));
+  loginModal.login(Cypress.env('DEMOBLAZE_USER'), password);
+});
+
+When('I attempt to log in as a user that does not exist', () => {
+  cy.on('window:alert', cy.stub().as('alert'));
+  const ghost = `ghost_${Date.now()}_${Math.floor(Math.random() * 100000)}`;
+  loginModal.login(ghost, 'whatever');
+});
+
+Then('I should see the login error {string}', (message: string) => {
+  cy.get('@alert').should('have.been.calledWith', message);
+});

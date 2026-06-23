@@ -11,6 +11,9 @@ export default defineConfig({
   trashAssetsBeforeRuns: true,
   e2e: {
     baseUrl: "https://www.demoblaze.com",
+    // Demoblaze is a shared public demo; retry in run mode to absorb transient
+    // backend latency. (Phase 4 will formalize the CI flaky-test strategy.)
+    retries: { runMode: 2, openMode: 0 },
     numTestsKeptInMemory: 10,
     specPattern: "**/*.feature",
     async setupNodeEvents(
