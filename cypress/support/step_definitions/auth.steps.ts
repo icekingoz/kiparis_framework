@@ -1,9 +1,12 @@
 import { Then, When } from '@badeball/cypress-cucumber-preprocessor';
 import { HomePage } from '../pages/HomePage';
 import { LoginModal } from '../pages/LoginModal';
+import { SignupModal } from '../pages/SignupModal';
+import { createUniqueUser } from '../factories/userFactory';
 
 const home = new HomePage();
 const loginModal = new LoginModal();
+const signupModal = new SignupModal();
 
 When('I log in with valid credentials', () => {
   const user = Cypress.env('DEMOBLAZE_USER');
@@ -36,4 +39,14 @@ When('I attempt to log in as a user that does not exist', () => {
 
 Then('I should see the login error {string}', (message: string) => {
   cy.get('@alert').should('have.been.calledWith', message);
+});
+
+When('I sign up as a new unique user', () => {
+  cy.on('window:alert', cy.stub().as('alert'));
+  const user = createUniqueUser();
+  signupModal.signup(user.username, user.password);
+});
+
+Then('I should see the signup confirmation', () => {
+  cy.get('@alert').should('have.been.calledWith', 'Sign up successful.');
 });
